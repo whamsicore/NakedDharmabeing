@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/constants/index.ts","../../src/constants/copilot-protocol.ts"],"sourcesContent":["export * from \"./copilot-protocol\";\n","export const EXCLUDE_FROM_FORWARD_PROPS_KEYS = \"exclude_from_forward_props_keys\";\n"],"mappings":";;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;;;ACAO,IAAM,kCAAkC;","names":[]}

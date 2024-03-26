@@ -1,118 +1,128 @@
-'use client'
+"use client"
+// import { CopilotKit } from "@/vendor/CopilotKit/packages/react-core";
+// import { CopilotSidebar } from "@/vendor/CopilotKit/packages/react-ui";
+import { createContext, useState, useEffect } from 'react';
+
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import "./styles.css";
 import "@copilotkit/react-ui/styles.css";
 import "@copilotkit/react-textarea/styles.css";
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import "react-grid-layout/css/styles.css";
+import "react-resizable/css/styles.css";
+// import "@/vendor/copilotkit/packages/react-textarea/src/styles.css";
+// import "@/vendor/copilotkit/packages/react-ui/src/styles.css";
+// import "@/vendor/copilotkit/packages/react-textarea/src/styles.css";
 const inter = Inter({ subsets: ["latin"] });
-import { useState } from 'react';
+import { Navigater } from "./components/core/Navigator"
+import { RainbowWrapper } from "./components/core/RainbowWrapper"
+import {diff} from "deep-diff"
 
 // export const metadata: Metadata = {
 //   title: "The Dharmabot",
 //   description: "",
 // };
+// interface AppContextType {
+//   app: { name: string; isActive: boolean } | null;
+// }
+
+// ANCHOR - generate the layout based on the endpoint - last: manual
+interface App {
+  dao?: {
+    canvas: string;
+  },
+  dharmabeing?: {}
+} 
+// !ANCHOR
+
+interface AppContextType {
+  app: App | null;
+  updateApp: (newApp: App) => void;
+}
+
+export const AppContext = createContext<AppContextType>({
+  app: {
+    dao:{
+      canvas:""
+    },
+    dharmabeing:{}
+  },
+  updateApp: () => {}, // Placeholder function
+});
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  
-  const router = useRouter();
 
-  // Example test code to demonstrate useRouter capabilities
-  useEffect(() => {
-    // Navigate to a different page after 5 seconds
-    const navigateTimer = setTimeout(() => {
-      // router.push('/dashboard');
-    }, 5000);
+  const [app, setApp] = useState<App|null>(null)
 
-    // Example of prefetching a page (improves performance by loading data in advance)
-    router.prefetch('/about');
+  const updateApp = async (newApp: App) => {
+    const differences = diff(app, newApp);
+    console.log("@deep-diff:", differences)
 
-    return () => clearTimeout(navigateTimer);
-  }, [router]);
-  
-  const [whiteLight, setWhiteLight] = useState(['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']);
+    setApp(newApp); // Update state locally
 
-  useEffect(() => {
-    const RainbowVibe = 300; // Interval set to 1000 milliseconds
-    const interval = setInterval(() => {
-      setWhiteLight((currentColors) => {
-        const [first, ...rest] = currentColors;
-        return [...rest, first];
+    console.log('Debug log: App context updating...');
+    try {
+      // Send a POST request to update the backend
+      const response = await fetch('/setApp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newApp),
       });
-    }, RainbowVibe); // Rotate colors every second using RainbowVibe variable
+      if (!response.ok) {
+        throw new Error('Failed to update app context in the backend');
+      }
+      console.log('App context updated successfully in the backend');
+    } catch (error) {
+      console.error('Error updating app context:', error);
+    }
+  }
 
-    return () => clearInterval(interval);
-  }, [])
-  
+  useEffect(() => {
+    const fetchAppContext = async () => {
+      try {
+        console.log('Fetching app context...');
+        const response = await fetch('/getApp');
+        if (response.ok) {
+          const data:App = await response.json();
+          // console.log('Type:', typeof data);
+          console.log('App context fetched successfully, Type:', typeof data);
+          
+          setApp(data);
+        } else {
+          throw new Error('Failed to fetch app context');
+        }
+      } catch (error) {
+        console.error('Error fetching app context:', error);
+      }
+    };
+
+    fetchAppContext();
+  }, []);
+  // const [chatInProgress, setChatInProgress] = useState(false);
+
   return (
     <html lang="en">
+      <head>
+        <title>Dharmabot v1</title>
+      </head>
       <body className={inter.className}>
-        <NavigationComponent/>
-        
-        {
-          whiteLight.reduceRight((layer, color) => ( // Accumulator
-            <div style={{ 
-              padding: '25px', backgroundColor: color, borderLeft: `2px solid ${color}`, borderRight: `2px solid ${color}` 
-            }}>
-              {layer}
-            </div>
-          ), ( // initial value
-          <div>
-            {children}
-          </div>)
-        )
-      }
-
+        <div className="relative min-h-screen min-w-full">
+          <AppContext.Provider value={{app, updateApp}}>
+            <RainbowWrapper className="h-screen bg-white text-black">
+              {children}  
+            </RainbowWrapper>
+            <Navigater className="absolute bottom-0 left-0 right-0" />
+          </AppContext.Provider>
+        </div>
       </body>
     </html>
   );
 }
-
-const NavigationComponent = () => {
-  const router = useRouter();
-  // Assuming paths are dynamically determined or fetched from some source
-  const [paths, setPaths] = useState(["/dashboard", "/users", "/settings"]);
-  const [history, setHistory] = useState([]);
-  const [historyIndex, setHistoryIndex] = useState(-1);
-
-  const goToRandomPage = () => {
-    const randomPath = paths[Math.floor(Math.random() * paths.length)];
-    router.push(randomPath);
-    const newHistory = [...history];
-    newHistory.splice(historyIndex + 1, history.length - historyIndex, randomPath);
-    setHistory(newHistory);
-    setHistoryIndex(historyIndex + 1);
-  };
-
-  const goBack = () => {
-    if (historyIndex > 0) {
-      router.push(history[historyIndex - 1]);
-      setHistoryIndex(historyIndex - 1);
-    }
-  };
-
-  const goForward = () => {
-    if (historyIndex < history.length - 1) {
-      router.push(history[historyIndex + 1]);
-      setHistoryIndex(historyIndex + 1);
-    }
-  };
-
-  return (
-    <nav className="bg-gray-800 p-4 flex justify-between">
-      
-      
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={goToRandomPage}>Go to a Random Page</button>
-      <button className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${historyIndex <= 0 ? 'opacity-50 cursor-not-allowed' : ''}`} onClick={goBack} disabled={historyIndex <= 0}>Back</button>
-      <button className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${historyIndex >= history.length - 1 ? 'opacity-50 cursor-not-allowed' : ''}`} onClick={goForward} disabled={historyIndex >= history.length - 1}>Forward</button>
-    </nav>
-  );
-};
-
-// export default NavigationComponent;

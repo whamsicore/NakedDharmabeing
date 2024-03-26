@@ -1,9 +1,15 @@
 "use client";
 
+// import {
+//   CopilotKit,
+// } from "@/vendor/CopilotKit/packages/react-core";
+// import { CopilotSidebar } from "@/vendor/CopilotKit/packages/react-ui";
 import {
   CopilotKit,
 } from "@copilotkit/react-core";
 import { CopilotSidebar } from "@copilotkit/react-ui";
+
+
 import { useState } from "react";
 import { Presentation } from "../components/Presentation";
 
@@ -23,7 +29,7 @@ export default function AIPresentation() {
         onInProgress={(inProgress) => {
           setChatInProgress(inProgress);
         }}
-      >
+        >
         <Presentation chatInProgress={chatInProgress} />
       </CopilotSidebar>
     </CopilotKit>

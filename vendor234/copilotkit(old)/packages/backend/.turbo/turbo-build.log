@@ -1,0 +1,122 @@
+
+> @copilotkit/backend@0.4.0 build /Users/paytonlee/Developer/Github/CopilotKit.worktrees/test2/CopilotKit/packages/backend
+> tsup --clean
+
+CLI Building entry: src/index.ts, src/lib/copilotkit-backend.ts, src/lib/index.ts, src/lib/langchain-adapter.ts, src/lib/openai-adapter.ts, src/streams/assistant-response.ts, src/streams/index.ts, src/utils/index.ts, src/utils/langserve.ts, src/utils/openai.ts, src/utils/stream.ts, src/utils/utils.test.ts, src/utils/utils.ts, src/types/index.ts, src/types/langserve.ts, src/types/service-adapter.ts
+CLI Using tsconfig: tsconfig.json
+CLI tsup v6.7.0
+CLI Using tsup config: /Users/paytonlee/Developer/Github/CopilotKit.worktrees/test2/CopilotKit/packages/backend/tsup.config.ts
+CLI Target: node14
+CLI Cleaning output folder
+ESM Build start
+CJS Build start
+CJS dist/index.js                          21.89 KB
+CJS dist/streams/index.js                  2.33 KB
+CJS dist/types/index.js                    797.00 B
+CJS dist/lib/langchain-adapter.js          5.67 KB
+CJS dist/lib/index.js                      20.50 KB
+CJS dist/utils/openai.js                   4.48 KB
+CJS dist/utils/stream.js                   7.00 KB
+CJS dist/utils/utils.test.js               184.00 B
+CJS dist/lib/openai-adapter.js             4.60 KB
+CJS dist/streams/assistant-response.js     2.35 KB
+CJS dist/utils/utils.js                    797.00 B
+CJS dist/utils/langserve.js                3.25 KB
+CJS dist/types/langserve.js                813.00 B
+CJS dist/types/service-adapter.js          837.00 B
+CJS dist/lib/copilotkit-backend.js         12.86 KB
+CJS dist/utils/index.js                    11.68 KB
+CJS dist/index.js.map                      39.22 KB
+CJS dist/types/index.js.map                227.00 B
+CJS dist/lib/index.js.map                  36.89 KB
+CJS dist/streams/index.js.map              2.52 KB
+CJS dist/utils/utils.test.js.map           354.00 B
+CJS dist/streams/assistant-response.js.map 2.41 KB
+CJS dist/utils/utils.js.map                137.00 B
+CJS dist/lib/openai-adapter.js.map         7.11 KB
+CJS dist/types/langserve.js.map            393.00 B
+CJS dist/utils/langserve.js.map            3.91 KB
+CJS dist/lib/copilotkit-backend.js.map     25.66 KB
+CJS dist/types/service-adapter.js.map      257.00 B
+CJS dist/utils/index.js.map                19.69 KB
+CJS dist/utils/stream.js.map               14.47 KB
+CJS dist/lib/langchain-adapter.js.map      11.77 KB
+CJS dist/utils/openai.js.map               5.73 KB
+CJS ⚡️ Build success in 32ms
+ESM dist/utils/langserve.mjs                213.00 B
+ESM dist/utils/utils.test.mjs               170.00 B
+ESM dist/types/langserve.mjs                70.00 B
+ESM dist/utils/openai.mjs                   436.00 B
+ESM dist/index.mjs                          770.00 B
+ESM dist/utils/utils.mjs                    66.00 B
+ESM dist/types/service-adapter.mjs          44.00 B
+ESM dist/chunk-UPAJA2XN.mjs                 43.00 B
+ESM dist/lib/copilotkit-backend.mjs         342.00 B
+ESM dist/utils/stream.mjs                   180.00 B
+ESM dist/chunk-YPBKY4KY.mjs                 43.00 B
+ESM dist/types/index.mjs                    98.00 B
+ESM dist/chunk-JBEJQOZG.mjs                 4.29 KB
+ESM dist/chunk-GNM6Q6Z4.mjs                 1.06 KB
+ESM dist/lib/index.mjs                      515.00 B
+ESM dist/streams/index.mjs                  185.00 B
+ESM dist/utils/index.mjs                    765.00 B
+ESM dist/lib/openai-adapter.mjs             160.00 B
+ESM dist/chunk-UTSCIWKW.mjs                 3.96 KB
+ESM dist/chunk-ASCS5UEQ.mjs                 1.23 KB
+ESM dist/chunk-24JQJVDU.mjs                 43.00 B
+ESM dist/chunk-SLVMMFID.mjs                 43.00 B
+ESM dist/chunk-TRZNOUWA.mjs                 5.06 KB
+ESM dist/chunk-TZBGHIVS.mjs                 3.15 KB
+ESM dist/chunk-Y4ZXOIJH.mjs                 2.15 KB
+ESM dist/chunk-HGLO5LDS.mjs                 43.00 B
+ESM dist/lib/langchain-adapter.mjs          297.00 B
+ESM dist/streams/assistant-response.mjs     166.00 B
+ESM dist/chunk-AFQGBKGB.mjs                 43.00 B
+ESM dist/types/langserve.mjs.map            71.00 B
+ESM dist/utils/langserve.mjs.map            71.00 B
+ESM dist/utils/openai.mjs.map               71.00 B
+ESM dist/utils/utils.mjs.map                71.00 B
+ESM dist/index.mjs.map                      71.00 B
+ESM dist/chunk-UPAJA2XN.mjs.map             71.00 B
+ESM dist/lib/copilotkit-backend.mjs.map     71.00 B
+ESM dist/utils/utils.test.mjs.map           352.00 B
+ESM dist/types/service-adapter.mjs.map      71.00 B
+ESM dist/chunk-YPBKY4KY.mjs.map             71.00 B
+ESM dist/utils/stream.mjs.map               71.00 B
+ESM dist/chunk-JBEJQOZG.mjs.map             7.85 KB
+ESM dist/types/index.mjs.map                71.00 B
+ESM dist/chunk-GNM6Q6Z4.mjs.map             2.10 KB
+ESM dist/streams/index.mjs.map              71.00 B
+ESM dist/utils/index.mjs.map                71.00 B
+ESM dist/lib/openai-adapter.mjs.map         71.00 B
+ESM dist/chunk-UTSCIWKW.mjs.map             7.46 KB
+ESM dist/chunk-ASCS5UEQ.mjs.map             2.37 KB
+ESM dist/chunk-TRZNOUWA.mjs.map             10.06 KB
+ESM dist/chunk-SLVMMFID.mjs.map             71.00 B
+ESM dist/chunk-24JQJVDU.mjs.map             71.00 B
+ESM dist/chunk-Y4ZXOIJH.mjs.map             3.86 KB
+ESM dist/chunk-TZBGHIVS.mjs.map             5.67 KB
+ESM dist/streams/assistant-response.mjs.map 71.00 B
+ESM dist/chunk-AFQGBKGB.mjs.map             71.00 B
+ESM dist/chunk-HGLO5LDS.mjs.map             71.00 B
+ESM dist/lib/index.mjs.map                  71.00 B
+ESM dist/lib/langchain-adapter.mjs.map      71.00 B
+ESM ⚡️ Build success in 32ms
+DTS Build start
+DTS ⚡️ Build success in 1661ms
+DTS dist/index.d.ts                      675.00 B
+DTS dist/streams/assistant-response.d.ts 374.00 B
+DTS dist/types/service-adapter.d.ts      152.00 B
+DTS dist/types/langserve.d.ts            275.00 B
+DTS dist/lib/copilotkit-backend.d.ts     1.15 KB
+DTS dist/lib/openai-adapter.d.ts         428.00 B
+DTS dist/lib/langchain-adapter.d.ts      1.18 KB
+DTS dist/utils/langserve.d.ts            369.00 B
+DTS dist/lib/index.d.ts                  463.00 B
+DTS dist/streams/index.d.ts              103.00 B
+DTS dist/utils/index.d.ts                404.00 B
+DTS dist/utils/openai.d.ts               945.00 B
+DTS dist/utils/stream.d.ts               456.00 B
+DTS dist/utils/utils.test.d.ts           12.00 B
+DTS dist/utils/utils.d.ts                12.00 B
+DTS dist/types/index.d.ts                140.00 B

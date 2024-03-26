@@ -1,8 +1,10 @@
 "use client";
-import { useMakeCopilotActionable } from "@copilotkit/react-core";
-import { useState } from "react";
-import Markdown from "react-markdown";
+import { 
+  useMakeCopilotActionable, 
+} from "@copilotkit/react-core";
+// } from "@/vendor/copilotkit/packages/react-core";
 
+import { useState } from "react";
 
 export interface SlideModel {
   title: string;
@@ -56,7 +58,7 @@ export const Slide = (props: SlideProps) => {
           required: true,
         },
       ],
-      implementation: async (title, content, backgroundImageDescription, spokenNarration) => {
+      implementation: async ({title, content, backgroundImageDescription, spokenNarration}) => {
         props.partialUpdateSlide({
           title,
           content,

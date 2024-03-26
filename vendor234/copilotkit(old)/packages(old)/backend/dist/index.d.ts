@@ -1,0 +1,12 @@
+export { experimental_AssistantResponse } from './streams/assistant-response.js';
+export { CopilotKitServiceAdapter } from './types/service-adapter.js';
+export { RemoteChain } from './types/langserve.js';
+export { CopilotBackend, mergeServerSideTools } from './lib/copilotkit-backend.js';
+export { OpenAIAdapter, OpenAIAdapterParams } from './lib/openai-adapter.js';
+export { LangChainAdapter, LangChainMessageStream, LangChainReturnType } from './lib/langchain-adapter.js';
+export { inferLangServeParameters } from './utils/langserve.js';
+import '@copilotkit/shared';
+import 'http';
+import 'openai';
+import '@langchain/core/messages';
+import '@langchain/core/utils/stream';

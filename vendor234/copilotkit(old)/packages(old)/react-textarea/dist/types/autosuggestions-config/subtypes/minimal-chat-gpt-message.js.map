@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../src/types/autosuggestions-config/subtypes/minimal-chat-gpt-message.tsx"],"sourcesContent":["export interface MinimalChatGPTMessage {\n  role: string;\n  content: string;\n  name?: string;\n}\n"],"mappings":";;;;;;;;;;;;;;;;AAAA;AAAA;","names":[]}

@@ -1,11 +1,15 @@
 "use client";
-import { useCopilotContext } from "@copilotkit/react-core";
-import { CopilotTask } from "@copilotkit/react-core";
-import {
+import { 
+  useCopilotContext, 
+  CopilotTask,
   useMakeCopilotActionable,
+  // useCopilotAction,
   useMakeCopilotReadable
-} from "@copilotkit/react-core";
-import { useCallback, useMemo, useState } from "react";
+} from "@CopilotKit/react-core";
+// } from "@/vendor/CopilotKit/packages/react-core";
+
+import { useCallback, useMemo, useState, useEffect } from "react";
+import { io } from 'socket.io-client';
 import {
   BackwardIcon,
   ForwardIcon,
@@ -18,9 +22,24 @@ import {
 import { resetGlobalAudio, speak } from "../utils/globalAudio";
 import { ActionButton } from "./ActionButton";
 import { SlideModel, Slide } from "./Slide";
+import Grid from "./Grid";
 
 export const Presentation = ({ chatInProgress }: { chatInProgress: boolean; }) => {
   
+  useEffect(() => {
+    const socket = io();
+
+    socket.on('connect', () => {
+      console.log('Connected to WebSocket server')
+      
+    });
+
+    // Return a function that performs the cleanup
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
+
   const [slides, setSlides] = useState<SlideModel[]>([
     {
       title: `Welcome to our presentation!`,
@@ -67,7 +86,6 @@ export const Presentation = ({ chatInProgress }: { chatInProgress: boolean; }) =
           required: true,
         },
       ],
-
       implementation: async (title, content, backgroundImageDescription, spokenNarration) => {
         const newSlide: SlideModel = {
           title,
@@ -102,8 +120,9 @@ export const Presentation = ({ chatInProgress }: { chatInProgress: boolean; }) =
 
   return (
     <div className="relative">
-      <Slide slide={currentSlide} partialUpdateSlide={updateCurrentSlide} />
+      <Grid />
 
+      <Slide slide={currentSlide} partialUpdateSlide={updateCurrentSlide} />
       { /* Add the action buttons below */ }
       <div className="absolute top-0 left-0 mt-6 ml-4 z-30">
         <ActionButton

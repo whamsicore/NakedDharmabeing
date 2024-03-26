@@ -1,3 +1,5 @@
+// } from "@/vendor/CopilotKit/packages/backend";
+// } from "@/vendor/CopilotKit/packages/shared";
 import { CopilotBackend, OpenAIAdapter } from "@copilotkit/backend";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { ChatOpenAI } from "@langchain/openai";
@@ -25,12 +27,16 @@ const researchAction: AnnotatedFunction<any> = {
 
 export async function POST(req: Request): Promise<Response> {
   const actions: AnnotatedFunction<any>[] = [];
+  
+  console.log('@ api/copilotkit')
+  
   if (process.env["TAVILY_API_KEY"]) {
     actions.push(researchAction);
   }
   const copilotKit = new CopilotBackend({
     actions: actions,
   });
-
-  return copilotKit.response(req, new OpenAIAdapter());
+  const res = copilotKit.response(req, new OpenAIAdapter());
+  console.log('@ api/copilotkit res:', res)
+  return res;
 }

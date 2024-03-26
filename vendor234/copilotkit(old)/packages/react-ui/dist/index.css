@@ -1,0 +1,912 @@
+/* src/css/colors.css */
+:root {
+  --copilot-kit-primary-color: rgb(59 130 246);
+  --copilot-kit-contrast-color: rgb(255 255 255);
+  --copilot-kit-secondary-color: rgb(243 244 246);
+  --copilot-kit-secondary-contrast-color: rgb(0 0 0);
+  --copilot-kit-background-color: rgb(255 255 255);
+  --copilot-kit-muted-color: rgb(106 106 106);
+  --copilot-kit-separator-color: rgba(0, 0, 0, 0.08);
+  --copilot-kit-scrollbar-color: rgba(0, 0, 0, 0.2);
+  --copilot-kit-button-background-color: var(--copilot-kit-primary-color);
+  --copilot-kit-button-icon-color: var(--copilot-kit-contrast-color);
+  --copilot-kit-header-background-color: var(--copilot-kit-primary-color);
+  --copilot-kit-header-title-color: var(--copilot-kit-contrast-color);
+  --copilot-kit-header-close-button-color: var(--copilot-kit-contrast-color);
+  --copilot-kit-header-separator-color: var(--copilot-kit-separator-color);
+  --copilot-kit-input-background-color: var(--copilot-kit-background-color);
+  --copilot-kit-input-send-button-color: var(--copilot-kit-primary-color);
+  --copilot-kit-input-send-button-disabled-color: var(--copilot-kit-muted-color);
+  --copilot-kit-input-placeholder-color: var(--copilot-kit-muted-color);
+  --copilot-kit-input-color: var(--copilot-kit-secondary-contrast-color);
+  --copilot-kit-input-separator-color: var(--copilot-kit-separator-color);
+  --copilot-kit-messages-background-color: var(--copilot-kit-background-color);
+  --copilot-kit-message-user-background-color: var(--copilot-kit-primary-color);
+  --copilot-kit-message-user-color: var(--copilot-kit-contrast-color);
+  --copilot-kit-message-assistant-background-color: var(--copilot-kit-secondary-color);
+  --copilot-kit-message-assistant-color: var(--copilot-kit-secondary-contrast-color);
+  --copilot-kit-response-button-border-color: var(--copilot-kit-separator-color);
+  --copilot-kit-response-button-color: #333;
+  --copilot-kit-response-button-background-color: #fff;
+}
+
+/* src/css/popup.css */
+.copilotKitPopup {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 30;
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    "Noto Sans",
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
+  font-feature-settings: normal;
+  font-variation-settings: normal;
+  touch-action: manipulation;
+}
+.copilotKitPopup svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* src/css/sidebar.css */
+.copilotKitSidebar {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 30;
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    "Noto Sans",
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
+  font-feature-settings: normal;
+  font-variation-settings: normal;
+  touch-action: manipulation;
+}
+.copilotKitSidebar svg {
+  display: inline-block;
+  vertical-align: middle;
+}
+.copilotKitSidebarContentWrapper {
+  overflow: visible;
+  margin-right: 0px;
+  transition: margin-right 0.3s ease;
+}
+@media (min-width: 640px) {
+  .copilotKitSidebarContentWrapper.sidebarExpanded {
+    margin-right: 24rem;
+  }
+}
+
+/* src/css/button.css */
+.copilotKitButton {
+  width: 3.5rem;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  outline: none;
+  position: relative;
+  transform: scale(1);
+  transition: transform 200ms;
+  background-color: var(--copilot-kit-button-background-color);
+  color: var(--copilot-kit-button-icon-color);
+  cursor: pointer;
+}
+.copilotKitButton:hover {
+  transform: scale(1.1);
+}
+.copilotKitButton:active {
+  transform: scale(0.75);
+}
+.copilotKitButtonIcon {
+  transition: opacity 100ms, transform 300ms;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.copilotKitButton.open .copilotKitButtonIconOpen {
+  transform: translate(-50%, -50%) scale(0) rotate(90deg);
+  opacity: 0;
+}
+.copilotKitButton.open .copilotKitButtonIconClose {
+  transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  opacity: 1;
+}
+.copilotKitButton:not(.open) .copilotKitButtonIconOpen {
+  transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  opacity: 1;
+}
+.copilotKitButton:not(.open) .copilotKitButtonIconClose {
+  transform: translate(-50%, -50%) scale(0) rotate(-90deg);
+  opacity: 0;
+}
+
+/* src/css/header.css */
+.copilotKitHeader {
+  height: 56px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: var(--copilot-kit-header-background-color);
+  color: var(--copilot-kit-header-title-color);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom: 1px solid var(--copilot-kit-header-separator-color);
+}
+.copilotKitSidebar .copilotKitHeader {
+  border-radius: 0;
+}
+@media (min-width: 640px) {
+  .copilotKitHeader {
+    padding-left: 24px;
+    padding-right: 24px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+}
+.copilotKitHeader > button {
+  border: 0;
+  padding: 0px;
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  outline: none;
+  color: var(--copilot-kit-header-close-button-color);
+  background-color: transparent;
+  cursor: pointer;
+}
+.copilotKitHeader > button:focus {
+  outline: none;
+}
+
+/* src/css/input.css */
+.copilotKitInput {
+  border-top: 1px solid var(--copilot-kit-input-separator-color);
+  padding-left: 2rem;
+  padding-right: 2.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  cursor: text;
+  position: relative;
+  border-bottom-left-radius: 0.75rem;
+  border-bottom-right-radius: 0.75rem;
+  background-color: var(--copilot-kit-input-background-color);
+}
+.copilotKitInput > button {
+  position: absolute;
+  right: 0.5rem;
+  padding: 0.25rem;
+  cursor: pointer;
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+  transform: scale(1);
+  color: rgba(0, 0, 0, 0.25);
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  background-color: transparent;
+  background-image: none;
+  text-transform: none;
+  font-family: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  border: 0;
+  margin: 0;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: center;
+}
+.copilotKitInput > button:not([disabled]) {
+  color: var(--copilot-kit-input-send-button-color);
+}
+.copilotKitInput > button:not([disabled]):hover {
+  transform: scale(1.1);
+}
+.copilotKitInput > button[disabled] {
+  color: var(--copilot-kit-input-send-button-disabled-color);
+}
+.copilotKitInput > textarea {
+  width: 100%;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  resize: none;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  cursor: text;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  font-weight: inherit;
+  color: var(--copilot-kit-input-color);
+  border: 0px;
+  background-color: var(--copilot-kit-input-background-color);
+}
+.copilotKitInput > textarea::-moz-placeholder {
+  color: var(--copilot-kit-input-placeholder-color);
+  opacity: 1;
+}
+.copilotKitInput > textarea::placeholder {
+  color: var(--copilot-kit-input-placeholder-color);
+  opacity: 1;
+}
+
+/* src/css/messages.css */
+.copilotKitMessages {
+  overflow-y: scroll;
+  flex: 1;
+  padding: 1rem 2rem;
+  padding-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--copilot-kit-messages-background-color);
+}
+.copilotKitMessages::-webkit-scrollbar {
+  width: 9px;
+}
+.copilotKitMessages::-webkit-scrollbar-thumb {
+  background-color: var(--copilot-kit-scrollbar-color);
+  border-radius: 10rem;
+  border: 2px solid var(--copilot-kit-messages-background-color);
+}
+.copilotKitMessages::-webkit-scrollbar-track-piece:start {
+  background: transparent;
+}
+.copilotKitMessages::-webkit-scrollbar-track-piece:end {
+  background: transparent;
+}
+.copilotKitMessage {
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  overflow-wrap: break-word;
+  max-width: 80%;
+  margin-bottom: 0.5rem;
+}
+.copilotKitMessage.copilotKitUserMessage {
+  background: var(--copilot-kit-message-user-background-color);
+  color: var(--copilot-kit-message-user-color);
+  margin-left: auto;
+}
+.copilotKitMessage.copilotKitAssistantMessage {
+  background: var(--copilot-kit-message-assistant-background-color);
+  color: var(--copilot-kit-message-assistant-color);
+  margin-right: auto;
+}
+.copilotKitMessage.copilotKitUserMessage + .copilotKitMessage.copilotKitAssistantMessage {
+  margin-top: 1.5rem;
+}
+.copilotKitMessage.copilotKitAssistantMessage + .copilotKitMessage.copilotKitUserMessage {
+  margin-top: 1.5rem;
+}
+
+/* src/css/window.css */
+.copilotKitWindow {
+  position: fixed;
+  inset: 0px;
+  transform-origin: bottom;
+  border-color: rgb(229 231 235);
+  background-color: rgb(255 255 255);
+  border-radius: 0.75rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 5px 40px;
+  flex-direction: column;
+  transition: opacity 100ms ease-out, transform 200ms ease-out;
+  opacity: 0;
+  transform: scale(0.95) translateY(20px);
+  display: flex;
+  pointer-events: none;
+}
+.copilotKitSidebar .copilotKitWindow {
+  border-radius: 0;
+  opacity: 1;
+  transform: translateX(100%);
+}
+.copilotKitWindow.open {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+}
+.copilotKitSidebar .copilotKitWindow.open {
+  transform: translateX(0);
+}
+@media (min-width: 640px) {
+  .copilotKitWindow {
+    transform-origin: bottom right;
+    bottom: 5rem;
+    right: 1rem;
+    top: auto;
+    left: auto;
+    border-width: 0px;
+    margin-bottom: 1rem;
+    width: 24rem;
+    height: 600px;
+    min-height: 200px;
+    max-height: calc(100% - 6rem);
+  }
+  .copilotKitSidebar .copilotKitWindow {
+    bottom: 0;
+    right: 0;
+    top: auto;
+    left: auto;
+    width: 28rem;
+    min-height: 100%;
+    margin-bottom: 0;
+    max-height: none;
+  }
+}
+
+/* src/css/animations.css */
+.copilotKitActivityDot1 {
+  animation: copilotKitActivityDotsAnimation 1.05s infinite;
+}
+.copilotKitActivityDot2 {
+  animation-delay: 0.1s;
+}
+.copilotKitActivityDot3 {
+  animation-delay: 0.2s;
+}
+@keyframes copilotKitActivityDotsAnimation {
+  0%, 57.14% {
+    animation-timing-function: cubic-bezier(0.33, 0.66, 0.66, 1);
+    transform: translate(0);
+  }
+  28.57% {
+    animation-timing-function: cubic-bezier(0.33, 0, 0.66, 0.33);
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+@keyframes copilotKitSpinAnimation {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes copilotKitPulseAnimation {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* src/css/response.css */
+.copilotKitResponseButton {
+  background-color: var(--copilot-kit-response-button-background-color);
+  border: 1px solid var(--copilot-kit-response-button-border-color);
+  border-radius: 4px;
+  color: var(--copilot-kit-response-button-color);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  height: 32px;
+  line-height: 30px;
+  margin: 0;
+  padding: 0 16px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: none;
+  white-space: nowrap;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -44px;
+}
+.copilotKitResponseButton:hover {
+  filter: brightness(95%);
+}
+.copilotKitResponseButton > span {
+  margin-right: 0.5rem;
+}
+
+/* src/css/markdown.css */
+.copilotKitMarkdown h1,
+.copilotKitMarkdown h2,
+.copilotKitMarkdown h3,
+.copilotKitMarkdown h4,
+.copilotKitMarkdown h5,
+.copilotKitMarkdown h6 {
+  font-weight: bold;
+  line-height: 1.2;
+}
+.copilotKitMarkdown h1:not(:last-child),
+.copilotKitMarkdown h2:not(:last-child),
+.copilotKitMarkdown h3:not(:last-child),
+.copilotKitMarkdown h4:not(:last-child),
+.copilotKitMarkdown h5:not(:last-child),
+.copilotKitMarkdown h6:not(:last-child) {
+  margin-bottom: 1rem;
+}
+.copilotKitMarkdown h1 {
+  font-size: 1.5em;
+}
+.copilotKitMarkdown h2 {
+  font-size: 1.25em;
+  font-weight: 600;
+}
+.copilotKitMarkdown h3 {
+  font-size: 1.1em;
+}
+.copilotKitMarkdown h4 {
+  font-size: 1em;
+}
+.copilotKitMarkdown h5 {
+  font-size: 0.9em;
+}
+.copilotKitMarkdown h6 {
+  font-size: 0.8em;
+}
+.copilotKitMarkdown p:not(:last-child) {
+  margin-bottom: 1.25em;
+}
+.copilotKitMarkdown pre:not(:last-child) {
+  margin-bottom: 1.25em;
+}
+.copilotKitMarkdown blockquote {
+  border-color: rgb(142, 142, 160);
+  border-left-width: 2px;
+  border-left-style: solid;
+  line-height: 1.2;
+  padding-left: 10px;
+}
+.copilotKitMarkdown blockquote p {
+  padding: 0.7em 0;
+}
+.copilotKitMarkdown ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  overflow: visible;
+}
+.copilotKitMarkdown li {
+  list-style-type: inherit;
+  list-style-position: outside;
+  margin-left: 0;
+  padding-left: 0;
+  position: relative;
+  overflow: visible;
+}
+.copilotKitCodeBlock {
+  position: relative;
+  width: 100%;
+  background-color: rgb(9 9 11);
+  border-radius: 0.375rem;
+}
+.copilotKitCodeBlockToolbar {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(39 39 42);
+  padding-left: 1rem;
+  padding-top: 0.09rem;
+  padding-bottom: 0.09rem;
+  color: rgb(228, 228, 228);
+  border-top-left-radius: 0.375rem;
+  border-top-right-radius: 0.375rem;
+  font-family: sans-serif;
+}
+.copilotKitCodeBlockToolbarLanguage {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  text-transform: lowercase;
+}
+.copilotKitCodeBlockToolbarButtons {
+  display: flex;
+  align-items: center;
+  margin-right: 0.25rem;
+  margin-left: 0.25rem;
+}
+.copilotKitCodeBlockToolbarButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  height: 2.5rem;
+  width: 2.5rem;
+  padding: 3px;
+  margin: 2px;
+}
+.copilotKitCodeBlockToolbarButton:hover {
+  background-color: rgb(55, 55, 58);
+}
+
+/* src/styles.css */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: solid;
+  border-color: #e5e7eb;
+}
+::before,
+::after {
+  --tw-content: "";
+}
+html {
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    "Noto Sans",
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    "Noto Color Emoji";
+  font-feature-settings: normal;
+  font-variation-settings: normal;
+}
+body {
+  margin: 0;
+  line-height: inherit;
+}
+hr {
+  height: 0;
+  color: inherit;
+  border-top-width: 1px;
+}
+abbr:where([title]) {
+  -webkit-text-decoration: underline dotted;
+  text-decoration: underline dotted;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+b,
+strong {
+  font-weight: bolder;
+}
+code,
+kbd,
+samp,
+pre {
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Liberation Mono",
+    "Courier New",
+    monospace;
+  font-size: 1em;
+}
+small {
+  font-size: 80%;
+}
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sub {
+  bottom: -0.25em;
+}
+sup {
+  top: -0.5em;
+}
+table {
+  text-indent: 0;
+  border-color: inherit;
+  border-collapse: collapse;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+}
+button,
+select {
+  text-transform: none;
+}
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  -webkit-appearance: button;
+  background-color: transparent;
+  background-image: none;
+}
+:-moz-focusring {
+  outline: auto;
+}
+:-moz-ui-invalid {
+  box-shadow: none;
+}
+progress {
+  vertical-align: baseline;
+}
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  height: auto;
+}
+[type=search] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+summary {
+  display: list-item;
+}
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+fieldset {
+  margin: 0;
+  padding: 0;
+}
+legend {
+  padding: 0;
+}
+ol,
+ul,
+menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+textarea {
+  resize: vertical;
+}
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  opacity: 1;
+  color: #9ca3af;
+}
+input::placeholder,
+textarea::placeholder {
+  opacity: 1;
+  color: #9ca3af;
+}
+button,
+[role=button] {
+  cursor: pointer;
+}
+:disabled {
+  cursor: default;
+}
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  vertical-align: middle;
+}
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+[hidden] {
+  display: none;
+}
+*,
+::before,
+::after {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x: ;
+  --tw-pan-y: ;
+  --tw-pinch-zoom: ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-ordinal: ;
+  --tw-slashed-zero: ;
+  --tw-numeric-figure: ;
+  --tw-numeric-spacing: ;
+  --tw-numeric-fraction: ;
+  --tw-ring-inset: ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur: ;
+  --tw-brightness: ;
+  --tw-contrast: ;
+  --tw-grayscale: ;
+  --tw-hue-rotate: ;
+  --tw-invert: ;
+  --tw-saturate: ;
+  --tw-sepia: ;
+  --tw-drop-shadow: ;
+  --tw-backdrop-blur: ;
+  --tw-backdrop-brightness: ;
+  --tw-backdrop-contrast: ;
+  --tw-backdrop-grayscale: ;
+  --tw-backdrop-hue-rotate: ;
+  --tw-backdrop-invert: ;
+  --tw-backdrop-opacity: ;
+  --tw-backdrop-saturate: ;
+  --tw-backdrop-sepia: ;
+}
+::backdrop {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x: ;
+  --tw-pan-y: ;
+  --tw-pinch-zoom: ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-ordinal: ;
+  --tw-slashed-zero: ;
+  --tw-numeric-figure: ;
+  --tw-numeric-spacing: ;
+  --tw-numeric-fraction: ;
+  --tw-ring-inset: ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgb(59 130 246 / 0.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur: ;
+  --tw-brightness: ;
+  --tw-contrast: ;
+  --tw-grayscale: ;
+  --tw-hue-rotate: ;
+  --tw-invert: ;
+  --tw-saturate: ;
+  --tw-sepia: ;
+  --tw-drop-shadow: ;
+  --tw-backdrop-blur: ;
+  --tw-backdrop-brightness: ;
+  --tw-backdrop-contrast: ;
+  --tw-backdrop-grayscale: ;
+  --tw-backdrop-hue-rotate: ;
+  --tw-backdrop-invert: ;
+  --tw-backdrop-opacity: ;
+  --tw-backdrop-saturate: ;
+  --tw-backdrop-sepia: ;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+.fixed {
+  position: fixed;
+}
+.inline-block {
+  display: inline-block;
+}
+.inline {
+  display: inline;
+}
+.hidden {
+  display: none;
+}
+.transform {
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.resize {
+  resize: both;
+}
+.lowercase {
+  text-transform: lowercase;
+}
+/*# sourceMappingURL=index.css.map */
