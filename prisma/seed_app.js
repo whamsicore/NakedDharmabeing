@@ -51,10 +51,11 @@ const mock_items = [
 ]
 
 async function main() {
-  await prisma.dAOs.deleteMany();
-  await prisma.dharmaBeings.deleteMany();
-  
-  await prisma.dAOs.create({
+  // 1. Set up foundation
+  await prisma.dao.deleteMany();
+  await prisma.dharmabeing.deleteMany();
+
+  await prisma.dao.create({
     data: {
       id: 1,
       name: "Genesis",
@@ -66,7 +67,7 @@ async function main() {
     },
   });
 
-  await prisma.dharmaBeings.create({
+  await prisma.dharmabeing.create({
     data: {
       id: 1,
       name: "Dharma01",
@@ -74,6 +75,10 @@ async function main() {
       permissions: "default",
     },
   });
+
+  // 1. Set up main page by scanning
+  
+
 }
 
 main()

@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../src/types/service-adapter.ts"],"sourcesContent":["export interface CopilotKitServiceAdapter {\n  stream(forwardedProps: any): ReadableStream | Promise<ReadableStream>;\n}\n"],"mappings":";;;;;;;;;;;;;;;;AAAA;AAAA;","names":[]}

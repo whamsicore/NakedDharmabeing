@@ -6,13 +6,14 @@ Models and data owned by communities is the way to go, with agents who not only 
 
 ## Technology 🕉️
 - Web3 integration to allow agents to become fully autonomous owners of funds.
-- Generative web interface: Members control the interface between them and the agent and the rest of the community.
-- Generative DAO: The agent assists with the creation of governance and rituals, and more importantly, its shared communal values..
-- ** PTOGE governance ** human powered engine for progress
+- Generative web interface: Members control the community interface.
+- Generative DAO: The agent assists with the creation of governance and rituals, and more importantly, its shared principles and values..
+- ** PTOGE governance ** community powered engine for progress
+- ** Multop onboarding ** Organic growth
 
 ## The Real Mission ✨
-Dharmaverse Scifi! Let's just have love and enjoy life.
+- Dharmaverse Scifi! Let's just have love and enjoy life.
 
 ## License ❣️
-The way is open source. 
-The data is for all members.
+- The way is open source. 
+- Data sovereignty lies with DAO.

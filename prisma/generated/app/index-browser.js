@@ -116,7 +116,7 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.DharmaBeingsScalarFieldEnum = {
+exports.Prisma.DharmabeingScalarFieldEnum = {
   id: 'id',
   name: 'name',
   type: 'type',
@@ -126,7 +126,7 @@ exports.Prisma.DharmaBeingsScalarFieldEnum = {
   permissions: 'permissions'
 };
 
-exports.Prisma.DAOsScalarFieldEnum = {
+exports.Prisma.DaoScalarFieldEnum = {
   id: 'id',
   name: 'name',
   description: 'description',
@@ -139,11 +139,39 @@ exports.Prisma.DAOsScalarFieldEnum = {
   parentId: 'parentId'
 };
 
+exports.Prisma.PortalScalarFieldEnum = {
+  id: 'id',
+  daoId: 'daoId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
-  hashedPassword: 'hashedPassword',
-  role: 'role'
+  hashedPassword: 'hashedPassword'
+};
+
+exports.Prisma.RoleScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.PermissionScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.DharmaActionScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.ConversationScalarFieldEnum = {
+  id: 'id',
+  content: 'content',
+  userId: 'userId',
+  dharmabeingId: 'dharmabeingId'
 };
 
 exports.Prisma.UserMemoryScalarFieldEnum = {
@@ -164,6 +192,63 @@ exports.Prisma.SessionScalarFieldEnum = {
   userId: 'userId'
 };
 
+exports.Prisma.DatabaseScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
+exports.Prisma.ModelScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  databaseId: 'databaseId'
+};
+
+exports.Prisma.AttributeScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  dataType: 'dataType',
+  constraints: 'constraints',
+  isPrimaryKey: 'isPrimaryKey',
+  foreignKeyTo: 'foreignKeyTo',
+  modelId: 'modelId'
+};
+
+exports.Prisma.RelationshipScalarFieldEnum = {
+  id: 'id',
+  modelIdFrom: 'modelIdFrom',
+  modelIdTo: 'modelIdTo',
+  type: 'type',
+  onDelete: 'onDelete',
+  onUpdate: 'onUpdate'
+};
+
+exports.Prisma.FileScalarFieldEnum = {
+  id: 'id',
+  fileName: 'fileName',
+  fileType: 'fileType',
+  filePath: 'filePath',
+  hash: 'hash'
+};
+
+exports.Prisma.TestScalarFieldEnum = {
+  id: 'id',
+  testName: 'testName',
+  description: 'description',
+  testType: 'testType',
+  filePath: 'filePath',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ExecutionScalarFieldEnum = {
+  id: 'id',
+  testId: 'testId',
+  status: 'status',
+  output: 'output',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -176,11 +261,23 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  DharmaBeings: 'DharmaBeings',
-  DAOs: 'DAOs',
+  Dharmabeing: 'Dharmabeing',
+  Dao: 'Dao',
+  Portal: 'Portal',
   User: 'User',
+  Role: 'Role',
+  Permission: 'Permission',
+  DharmaAction: 'DharmaAction',
+  Conversation: 'Conversation',
   UserMemory: 'UserMemory',
-  Session: 'Session'
+  Session: 'Session',
+  Database: 'Database',
+  Model: 'Model',
+  Attribute: 'Attribute',
+  Relationship: 'Relationship',
+  File: 'File',
+  Test: 'Test',
+  Execution: 'Execution'
 };
 
 /**
